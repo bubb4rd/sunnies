@@ -218,3 +218,31 @@ Deployment target iOS 17.0, `TARGETED_DEVICE_FAMILY = 1`, portrait only. Bundle 
 ### Follow-Up
 
 Revisit iPad and landscape after the MVP.
+
+---
+
+## ADR-011: Normalize picked images with ImageIO, in memory only
+
+Date: 2026-09-30
+Status: Accepted
+
+### Context
+
+M1 needs orientation fixes, safe downscaling, and metadata removal without blocking the UI or retaining photos.
+
+### Decision
+
+`ImageNormalizer` uses ImageIO thumbnailing (`CreateThumbnailWithTransform`) off the main actor via `@concurrent`. Longest side capped at 2048px, shortest side must be ≥100px, input ≤60MB. Output is a `CGImage` (no EXIF/GPS) held in memory; nothing is persisted or uploaded.
+
+### Reasoning
+
+Thumbnailing avoids decoding full-resolution originals; a `CGImage` carries no metadata, so stripping is implicit.
+
+### Consequences
+
+- Loads run in `.task(id:)`, so a new selection or removal cancels the previous load.
+- UI tests use the DEBUG-only `-SunniesSampleImage` argument because PhotosPicker can't be driven by XCUITest.
+
+### Follow-Up
+
+M2 crops the `CGImage`; JPEG encoding happens only when a request is built.

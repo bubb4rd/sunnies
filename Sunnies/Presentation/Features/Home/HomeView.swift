@@ -29,7 +29,7 @@ struct HomeView: View {
             .toolbar(.hidden, for: .navigationBar)
         }
         .fullScreenCover(isPresented: $isSearchFlowPresented) {
-            SearchFlowPlaceholderView()
+            SearchFlowView()
         }
     }
 

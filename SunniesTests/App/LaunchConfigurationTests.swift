@@ -16,4 +16,9 @@ struct LaunchConfigurationTests {
         #expect(LaunchConfiguration(arguments: ["Sunnies"]).mockScenario == nil)
         #expect(LaunchConfiguration(arguments: ["Sunnies", "-SunniesMockScenario"]).mockScenario == nil)
     }
+
+    @Test func sampleImageFlagIsOptIn() {
+        #expect(LaunchConfiguration(arguments: ["Sunnies", "-SunniesSampleImage"]).usesSampleImage)
+        #expect(!LaunchConfiguration(arguments: ["Sunnies"]).usesSampleImage)
+    }
 }

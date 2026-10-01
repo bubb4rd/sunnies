@@ -22,7 +22,7 @@ Use `xcrun simctl list devices available` to find a simulator name.
 
 ## Mock scenarios
 
-DEBUG builds read `-SunniesMockScenario <name>` (scheme → Run → Arguments): `exactMatch`, `likelyMatch`, `similarStyles` (default), `styleOnly`, `noResults`, `serviceFailure`, `timeout`, `malformedResponse`.
+DEBUG builds read `-SunniesSampleImage` (adds a "Use sample photo" button for UI tests) and `-SunniesMockScenario <name>` (scheme → Run → Arguments): `exactMatch`, `likelyMatch`, `similarStyles` (default), `styleOnly`, `noResults`, `serviceFailure`, `timeout`, `malformedResponse`.
 
 ## Layout
 

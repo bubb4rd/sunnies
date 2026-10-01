@@ -26,4 +26,5 @@ nonisolated extension AppEnvironment {
 
 extension EnvironmentValues {
     @Entry var appEnvironment: AppEnvironment = .preview
+    @Entry var launchConfiguration = LaunchConfiguration(arguments: [])
 }

@@ -2,23 +2,24 @@ import SwiftUI
 
 @main
 struct SunniesApp: App {
-    private let environment = SunniesApp.makeEnvironment()
+    private let launchConfiguration = SunniesApp.makeLaunchConfiguration()
 
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environment(\.appEnvironment, environment)
+                .environment(\.appEnvironment, .mock(scenario: launchConfiguration.mockScenario ?? .similarStyles))
+                .environment(\.launchConfiguration, launchConfiguration)
                 .tint(SunniesColor.accent)
         }
     }
 
+    // Development launch options are honored only in DEBUG builds.
     // Mocks are the only implementation until the M7 backend spike.
-    private static func makeEnvironment() -> AppEnvironment {
+    private static func makeLaunchConfiguration() -> LaunchConfiguration {
         #if DEBUG
-        let configuration = LaunchConfiguration(arguments: ProcessInfo.processInfo.arguments)
-        return .mock(scenario: configuration.mockScenario ?? .similarStyles)
+        LaunchConfiguration(arguments: ProcessInfo.processInfo.arguments)
         #else
-        return .mock()
+        LaunchConfiguration(arguments: [])
         #endif
     }
 }
