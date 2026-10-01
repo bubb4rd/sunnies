@@ -1,0 +1,9 @@
+---
+description: Swift 6 concurrency conventions
+globs: Sunnies/**/*.swift, SunniesTests/**/*.swift
+---
+- Swift 6 language mode; app and unit-test targets default to MainActor.
+- Mark Domain and Data types, protocols, and services `nonisolated`. Use `actor` for mutable shared state.
+- UI state lives in `@Observable @MainActor` view models.
+- No unbounded `Task` creation; tie tasks to view lifetime (`.task`) or store and cancel them.
+- No `try!`, no force unwraps unless provably safe. Image work off the main actor.

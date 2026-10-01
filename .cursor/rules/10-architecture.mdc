@@ -1,0 +1,9 @@
+---
+description: Layer boundaries
+globs: Sunnies/**/*.swift
+---
+- Layers: `App/` (composition, DI), `Presentation/` (views, view models, design system), `Domain/` (models, protocols, policies), `Data/` (mock/remote services, fixtures, mapping), `Infrastructure/` (image processing, config, logging).
+- Domain must not import SwiftUI or UIKit.
+- No network, persistence, or image processing in Views. View models receive services via `init`, built from `AppEnvironment`.
+- Features depend on `EyewearRecognitionService`, `EyewearCatalogService`, `SavedFramesRepository` — never concrete implementations.
+- All recognition responses pass through `ConfidencePolicy.validated`.

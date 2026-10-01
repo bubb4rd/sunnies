@@ -1,0 +1,10 @@
+---
+description: Sunnies product context and working rules
+alwaysApply: true
+---
+- Read `docs/agent-context.md` and `docs/decision-log.md` before changing code.
+- Product: image → eyewear identification or similar styles → save. Useful even without an exact match.
+- Never invent certainty. Respect the Explicit Non-Goals list; stop and explain before adding one.
+- Smallest change that satisfies approved scope. No unrelated refactors. No new dependencies without justification.
+- Multi-file features need a plan (Goal, Scope, Non-Goals, Files, Plan, Acceptance Criteria, Test Plan, Risks) before coding.
+- Don't claim done without a successful build and passing tests; report using the implementation format in the context doc.

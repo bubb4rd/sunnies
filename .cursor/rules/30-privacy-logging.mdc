@@ -1,0 +1,9 @@
+---
+description: Image privacy and logging
+alwaysApply: true
+---
+- Treat uploaded images as sensitive. Don't persist originals unless the user explicitly saves them.
+- Never log image bytes, base64, OCR text, private image URLs, tokens, search history, user notes, or credentials.
+- `RecognitionRequest` is intentionally not `Codable` and redacts its description — keep it that way.
+- No provider API keys in the app; remote calls go through a backend proxy (M7).
+- No silent retries of expensive analysis. No silent failures.

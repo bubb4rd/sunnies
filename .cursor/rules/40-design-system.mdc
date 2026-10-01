@@ -1,0 +1,10 @@
+---
+description: Design system and accessibility
+globs: Sunnies/Presentation/**/*.swift
+---
+- Use `SunniesColor`, `SunniesTypography`, `SunniesSpacing`, `SunniesRadius`, `sunniesShadow` — no raw colors, font sizes, or magic spacing.
+- Brand: primary-400 #F8E11A (Paris daisy yellow) as button fill with `onAccent` text; dark background primary-950 #2A1C04. Use `accent` (not raw yellow) for text/icons so light mode keeps contrast.
+- Reuse `StateView` for loading/empty/error, `ConfidenceBadge` for confidence, the `.sunnies*` button styles.
+- Dynamic Type text styles only; 44pt minimum tap targets; VoiceOver labels on every control.
+- Confidence is never conveyed by color alone. Never render `matchScore` as a number.
+- Editorial, calm, image-led. Avoid dashboard or cluttered marketplace patterns.

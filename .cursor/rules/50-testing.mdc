@@ -1,0 +1,8 @@
+---
+description: Testing conventions
+globs: SunniesTests/**/*.swift, SunniesUITests/**/*.swift
+---
+- Unit tests: Swift Testing (`@Test`, `#expect`, parameterized `arguments:`). UI tests: XCTest.
+- Mock services take `latency: .zero` in tests.
+- Every new confidence or failure state needs a fixture and a test; fixtures must pass `ConfidencePolicy` unchanged.
+- UI tests select scenarios with `-SunniesMockScenario <name>`.
